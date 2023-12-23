@@ -60,7 +60,7 @@ module "ec2_instances" {
   source         = "../../modules/ec2_instances"
   subnet_ids     = module.public_subnet.subnet_ids
 
-  ami_web        = "ami-00b8917ae86a424c9"  # AMI para servidor web
+  ami_web        = "ami-0523aa3e7cb0fad6b"  # AMI para servidor web
   ami_db         = "ami-00b8917ae86a424c9"  # AMI para servidor MongoDB
   instance_type  = "t2.micro"
   environment    = "development"
@@ -79,8 +79,9 @@ module "network_interface" {
 
 module "route_table_association" {
   source         = "../../modules/route_table_association"
-  subnet_id      = module.public_subnet.subnet_ids[0]  # Ejemplo con la primera subred
-  route_table_id = module.route_table.route_table_id  # Referencia correcta al ID de la tabla de ruteo
+  subnet_ids     = module.public_subnet.subnet_ids
+  route_table_id = module.route_table.route_table_id
+  environment    = "development"
 }
 
 module "eip" {
