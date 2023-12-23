@@ -19,3 +19,8 @@ variable "environment" {
 variable "security_group_id" {
   description = "ID del Security Group asociado con la instancia EC2"
 }
+
+variable "network_interface_ids" {
+  description = "Lista de IDs de interfaces de red para asociar con las instancias EC2"
+  type        = list(string)
+}
