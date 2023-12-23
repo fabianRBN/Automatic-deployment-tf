@@ -1,3 +1,9 @@
-output "instance_ids" {
-  value = aws_instance.example.*.id
+
+
+output "web_instance_ids" {
+  value = aws_instance.web.*.id
+}
+
+output "db_instance_ids" {
+  value = aws_instance.db.*.id
 }

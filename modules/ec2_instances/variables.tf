@@ -3,9 +3,6 @@ variable "subnet_ids" {
   type        = list(string)
 }
 
-variable "ami_id" {
-  description = "AMI ID para usar en las instancias EC2"
-}
 
 variable "instance_type" {
   description = "Tipo de instancia EC2"
@@ -16,11 +13,25 @@ variable "environment" {
   description = "El entorno (dev, test, prod)"
 }
 
-variable "security_group_id" {
-  description = "ID del Security Group asociado con la instancia EC2"
+
+
+variable "ami_web" {
+  description = "AMI ID for the web server"
 }
 
-variable "network_interface_ids" {
-  description = "Lista de IDs de interfaces de red para asociar con las instancias EC2"
+
+variable "ami_db" {
+  description = "AMI ID for the MongoDB server"
+}
+
+
+variable "web_network_interface_ids" {
+  description = "Network Interface IDs para los servidores web"
   type        = list(string)
 }
+
+variable "db_network_interface_ids" {
+  description = "Network Interface IDs para los servidores de base de datos"
+  type        = list(string)
+}
+

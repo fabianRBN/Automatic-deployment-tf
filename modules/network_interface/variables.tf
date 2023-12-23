@@ -1,10 +1,14 @@
 variable "subnet_ids" {
-  description = "Lista de IDs de subredes para las interfaces de red"
+  description = "Subnet IDs para las interfaces de red"
   type        = list(string)
 }
 
-variable "security_group_id" {
-  description = "ID del Security Group asociado con las interfaces de red"
+variable "web_sg_id" {
+  description = "Security Group ID para el servidor web"
+}
+
+variable "db_sg_id" {
+  description = "Security Group ID para el servidor de base de datos"
 }
 
 variable "environment" {
