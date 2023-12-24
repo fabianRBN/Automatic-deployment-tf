@@ -13,7 +13,7 @@ pipeline {
     stages {
         stage('Ejecutar Terraform') {
             steps {
-                dir('enviroments/development') {
+                dir('Automatic-deployment-tf/enviroments/development') {
                     script {
                         // Configura las credenciales de AWS como variables de entorno
                         sh 'export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID'
