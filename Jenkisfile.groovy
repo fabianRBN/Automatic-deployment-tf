@@ -14,7 +14,7 @@ pipeline {
         stage('PWD') {
             steps {
                 sh 'pwd'
-                sh 'la -al'
+                sh 'ls -al'
             }
         }
         stage('Ejecutar Terraform') {
