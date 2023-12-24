@@ -11,6 +11,12 @@ pipeline {
     }
 
     stages {
+        stage('PWD') {
+            steps {
+                sh 'pwd'
+                sh 'la -al'
+            }
+        }
         stage('Ejecutar Terraform') {
             steps {
                 dir('Automatic-deployment-tf/enviroments/development') {
