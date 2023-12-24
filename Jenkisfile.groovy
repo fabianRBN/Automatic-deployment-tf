@@ -14,12 +14,13 @@ pipeline {
         stage('PWD') {
             steps {
                 sh 'pwd'
-                sh 'ls -al'
+                sh 'ls -al /var/jenkins/workspace/Terraform-aws/Automatic-deployment-tf'
             }
         }
         stage('Ejecutar Terraform') {
             steps {
-                dir('Automatic-deployment-tf/enviroments/development') {
+        
+                dir('/var/jenkins/workspace/Terraform-aws/Automatic-deployment-tf/environments/development') {
                     script {
                         // Configura las credenciales de AWS como variables de entorno
                         sh 'export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID'
