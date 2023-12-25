@@ -160,3 +160,37 @@ resource "aws_security_group" "db" {
   }
 }
 
+resource "aws_security_group" "alb_sg" {
+  name        = "alb-sg-${var.environment}"
+  description = "Security Group for ALB"
+  vpc_id      = var.vpc_id
+
+  # Reglas de ingreso para permitir el tráfico HTTP/HTTPS
+  ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  # Reglas de egreso (ajustar según sea necesario)
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "alb-sg-${var.environment}"
+  }
+}
+
+

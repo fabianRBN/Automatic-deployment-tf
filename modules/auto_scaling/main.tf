@@ -29,6 +29,8 @@ resource "aws_autoscaling_group" "web_asg" {
   max_size             = var.max_size
   min_size             = var.min_size
   vpc_zone_identifier  = var.subnet_ids
+  target_group_arns = [var.web_target_group_arn]
+
   launch_template {
     id      = aws_launch_template.web.id
     version = "$Latest"

@@ -69,7 +69,14 @@ module "ec2_instances" {
 }
  */
 
-
+module "load_balancer" {
+  source               = "../../modules/load_balancer"
+  environment          = "testing"
+  alb_security_group_id = module.security_group.alb_sg_id
+  subnet_ids            = module.public_subnet.subnet_ids
+  vpc_id                = module.vpc.vpc_id
+  
+}
 
 module "auto_scaling" {
   source             = "../../modules/auto_scaling"
@@ -79,6 +86,9 @@ module "auto_scaling" {
   associate_public_ip = true
   security_group_ids = [module.security_group.web_sg_id] # Asegúrate de que este es el ID correcto del grupo de seguridad
   subnet_ids         = module.public_subnet.subnet_ids
+#    target_group_arns= [module.load_balancer.web_tg_arn]
+  web_target_group_arn = module.load_balancer.web_tg_arn
+
   desired_capacity   = 2
   max_size           = 4
   min_size           = 1

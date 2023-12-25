@@ -42,4 +42,9 @@ variable "user_data" {
   default     = ""
 }
 
+
+variable "web_target_group_arn" {
+  description = "ARN of the Target Group for the ASG"
+}
+
 # Puedes agregar más variables según sea necesario...
