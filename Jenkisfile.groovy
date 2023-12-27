@@ -14,7 +14,7 @@ pipeline {
         stage('PWD') {
             steps {
                 sh 'pwd'
-                sh 'ls -al /var/jenkins/workspace/Terraform-aws/Automatic-deployment-tf'
+                sh 'ls -al /var/jenkins/workspace/Terraform-aws/
             }
         }
         stage('Ejecutar Terraform') {
