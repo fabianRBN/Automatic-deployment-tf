@@ -30,6 +30,9 @@ pipeline {
                         sh 'terraform init'
                         sh 'terraform plan'
                         sh 'terraform apply -auto-approve'
+                        sleep time: 20, unit: 'SECONDS'
+                        sh 'terraform destroy -auto-approve'
+
                     }
                 }
             }
