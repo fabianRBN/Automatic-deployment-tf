@@ -32,8 +32,8 @@ module "route_table" {
 module "public_subnet" {
   source             = "../../modules/public_subnet"
   vpc_id             = module.vpc.vpc_id
-  subnet_cidr_blocks = ["10.0.1.0/24", "10.0.2.0/24"]
-  availability_zones = ["us-east-1a", "us-east-1b"]
+  subnet_cidr_blocks = ["10.0.1.0/24"]
+  availability_zones = ["us-east-1a"]
   environment        = "development"
 }
 
