@@ -14,13 +14,13 @@ pipeline {
         stage('VAlidate directory') {
             steps {
                 sh 'pwd'
-                sh 'ls -al /var/jenkins/workspace/Terraform-aws' 
+                sh 'ls -al /var/jenkins/workspace/Terraform-aws-InfraCost' 
             }
         }
         stage('Ejecutar Infracost') {
             steps {
         
-                dir('/var/jenkins/workspace/Terraform-aws/environments/development') {
+                dir('/var/jenkins/workspace/Terraform-aws-InfraCost/environments/development') {
                     script {
                         sh 'infracost breakdown --path main.tf > infracost-report.txt'
                     }
@@ -31,7 +31,7 @@ pipeline {
     post {
         always {
             // Archivar el reporte de Infracost
-            archiveArtifacts artifacts: '/var/jenkins/workspace/Terraform-aws/environments/development/infracost-report.txt', onlyIfSuccessful: true
+            archiveArtifacts artifacts: '/var/jenkins/workspace/Terraform-aws-InfraCost/environments/development/infracost-report.txt', onlyIfSuccessful: true
         }
     }
 }
