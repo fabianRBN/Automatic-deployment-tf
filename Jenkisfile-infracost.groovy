@@ -22,6 +22,9 @@ pipeline {
         
                 dir('/var/jenkins/workspace/Terraform-aws-InfraCost/environments/development') {
                     script {
+                        sh 'infracost -h'
+                        sh 'terraform init'
+                        sh 'terraform plan'
                         sh 'infracost breakdown --path /var/jenkins/workspace/Terraform-aws-InfraCost/environments/development/ > infracost-report.txt'
                     }
                 }
