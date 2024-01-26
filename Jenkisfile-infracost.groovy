@@ -8,6 +8,8 @@ pipeline {
         // Reemplaza 'id-de-tus-credenciales' con el ID que asignaste a tus credenciales en Jenkins
         AWS_ACCESS_KEY_ID = credentials('access_key')
         AWS_SECRET_ACCESS_KEY = credentials('secret_key')
+        INFRACOST_API_KEY = credentials('INFRACOST_API_KEY')
+
     }
 
     stages {
