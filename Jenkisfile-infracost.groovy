@@ -11,10 +11,21 @@ pipeline {
     }
 
     stages {
-        stage('VAlidate directory') {
+        stage('Validate directory') {
             steps {
                 sh 'pwd'
                 sh 'ls -al /var/jenkins/workspace/Terraform-aws-InfraCost' 
+            }
+        }
+        stage('Install Infracost') {
+            steps {
+                script {
+                    // Instalar Infracost
+                    sh '''
+                    curl -fsSL https://raw.githubusercontent.com/infracost/infracost/master/scripts/install.sh | sh
+                    export PATH=$PATH:$HOME/.local/bin
+                    '''
+                }
             }
         }
         stage('Ejecutar Infracost') {
