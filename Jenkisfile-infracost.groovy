@@ -29,6 +29,7 @@ pipeline {
                         sh 'terraform init'
                         sh 'terraform plan'
                         sh 'infracost breakdown --path /var/jenkins/workspace/Terraform-aws-InfraCost/environments/development/ > infracost-report.txt'
+                        sh 'cat infracost-report.txt'
                     }
                 }
             }
@@ -37,7 +38,7 @@ pipeline {
     post {
         always {
             // Archivar el reporte de Infracost
-            archiveArtifacts artifacts: '/var/jenkins/workspace/Terraform-aws-InfraCost/environments/development/infracost-report.txt', onlyIfSuccessful: true
+            archiveArtifacts artifacts: 'environments/development/infracost-report.txt', onlyIfSuccessful: true
         }
     }
 }
