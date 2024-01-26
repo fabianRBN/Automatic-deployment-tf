@@ -17,26 +17,16 @@ pipeline {
                 sh 'ls -al /var/jenkins/workspace/Terraform-aws-InfraCost' 
             }
         }
-        stage('Install Infracost') {
-            steps {
-                script {
-                    // Instalar Infracost
-                    sh '''
-                    curl -fsSL https://raw.githubusercontent.com/infracost/infracost/master/scripts/install.sh | sh
-                    export PATH=$PATH:$HOME/.local/bin
-                    '''
-                }
-            }
-        }
+        
         stage('Ejecutar Infracost') {
             steps {
         
                 dir('/var/jenkins/workspace/Terraform-aws-InfraCost/environments/development') {
                     script {
-                        sh '/usr/local/bin/infracost -h'
+                        sh 'infracost -h'
                         sh 'terraform init'
                         sh 'terraform plan'
-                        sh '/usr/local/bin/infracost breakdown --path /var/jenkins/workspace/Terraform-aws-InfraCost/environments/development/ > infracost-report.txt'
+                        sh 'infracost breakdown --path /var/jenkins/workspace/Terraform-aws-InfraCost/environments/development/ > infracost-report.txt'
                     }
                 }
             }
