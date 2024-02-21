@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define el endpoint que deseas verificar
-ENDPOINT="web-alb-testing-1239592585.us-east-1.elb.amazonaws.com"
+ENDPOINT="web-alb-testing-1325665007.us-east-1.elb.amazonaws.com"
 
 
 # Función para realizar la verificación
